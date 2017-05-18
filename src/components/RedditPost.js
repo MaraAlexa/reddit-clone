@@ -49,10 +49,9 @@ const Post = () => (
   </div>
 )
 
-
 class RedditPost extends React.Component {
-  render(){
-    return(
+  render () {
+    return (
       <div className='post-wrapper'>
         <Votes />
         <Post />

@@ -8,7 +8,7 @@ const RedditList = ({postsList}) => (
       <h2>Reddit Posts:</h2>
       {
         postsList.map((post) => {
-          <RedditPost key={post.id} post={post} />
+          <li><RedditPost key={post.id} post={post} /></li>
         })
       }
     </ul>
