@@ -5,7 +5,7 @@ const redditData = [
     title: 'Netflix goes crazy',
     thumbUrl: 'http://placehold.it/85x90',
     sourceUrl: 'netflix.com',
-    timestamp: '2017-02-29 21:21:55',
+    timestamp: '2017-02-28 21:21:55',
     author: 'marimar',
     comments: 33
   },

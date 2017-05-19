@@ -1,4 +1,5 @@
 const { resolve } = require('path')
+
 const srcDir = resolve(__dirname, 'src')
 
 // import plugins for webpack
@@ -15,12 +16,6 @@ module.exports = {
 
   module: {
     rules: [
-      {
-        enforce: 'pre',
-        test: /\.js$/,
-        loader: 'standard-loader',
-        exclude: /node_modules/
-      },
       {
         test: /\.js$/,
         loader: 'babel-loader',
