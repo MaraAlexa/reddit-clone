@@ -19,8 +19,8 @@ class Reddit extends React.Component {
     // fetch live data from Reddit // works in the browser repl
     const endpoint = 'https://www.reddit.com/r/reactjs.json'
     async function fetchReddit() {
-      let response = await fetch(endpoint)
-      let data = await response.json()
+      const response = await fetch(endpoint)
+      const data = await response.json()
       return data
     }
   }
@@ -35,7 +35,7 @@ class Reddit extends React.Component {
             <li>Get data from Reddit. Fetch with async await</li>
             <li>Follow data to see why it is not showing on screen</li>
           </ul>
-          <RedditList posts={fetchReddit} />
+          <RedditList posts={fetchReddit()} />
         </div>
       </div>
     )
