@@ -12,7 +12,7 @@ const Votes = ({ post }) => (
       className='arrow-up'
       name='arrow-up'
     />
-    <b>{post.votes}</b>
+    <b>{post.score}</b>
     <FontAwesome
       className='arrow-down'
       name='arrow-down'
@@ -34,13 +34,13 @@ class RedditPost extends React.Component {
         <Votes post={post} />
         <div className='row'>
           <div className='column thumb'>
-            <Thumbnail href='#' alt='85x90' src=' http://placehold.it/85x90' />
+            <Thumbnail href='#' alt='85x90' src={`${post.thumbnail}`} />
           </div>
           <div className='column post-content'>
             <a href=''><h1>{post.title}</h1></a>
-            <a href=''><small>{post.sourceUrl}</small></a>
+            <a href=''><small>{post.domain}</small></a>
             <div className='inline-wrap'>
-              <Time timestamp={post.timestamp} />
+              <Time timestamp={post.created} />
               <span className='author'>by <a href=''>{post.author}</a></span>
             </div>
 

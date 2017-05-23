@@ -15,15 +15,33 @@ class Reddit extends React.Component {
     }
   }
 
+
   componentDidMount() {
     // fetch live data from Reddit // works in the browser repl
-    const endpoint = 'https://www.reddit.com/r/reactjs.json'
-    async function fetchReddit() {
-      const response = await fetch(endpoint)
-      const data = await response.json()
-      return data
-    }
+    const endpoint = 'http://www.reddit.com/r/reactjs.json'
+    fetch(endpoint)
+      .then(response =>
+        response.json().then(json => ({json, response}))
+      ).then(({json, response}) => {
+        let posts = json.data.children;
+        this.processPosts(posts);
+      })
+      .catch(err => console.log(err));
+  } // end componentDidMount
+
+  processPosts = (posts) => {
+    // Make the data nicer to work with
+    let postsHash = posts.reduce((hash, post) => {
+      hash[post.data.id] = post.data;
+      return hash;
+    }, {});
+
+    this.setState({
+      posts: postsHash
+    });
   }
+
+
 
   render() {
     return (
@@ -35,14 +53,14 @@ class Reddit extends React.Component {
             <li>Get data from Reddit. Fetch with async await</li>
             <li>Follow data to see why it is not showing on screen</li>
           </ul>
-          <RedditList posts={fetchReddit()} />
+          <RedditList posts={Object.keys(this.state.posts).map(id => this.state.posts[id])}/>
         </div>
       </div>
     )
   }
 }
 Reddit.propTypes = {
-  data: PropTypes.array.isRequired,
+  //data: PropTypes.array.isRequired,
 }
 
 export default Reddit
